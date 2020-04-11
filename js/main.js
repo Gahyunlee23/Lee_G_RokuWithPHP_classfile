@@ -1,6 +1,6 @@
 import AllUsersComponent from './components/AllUsersComponent.js';
 import LoginComponent from './components/LoginComponent.js';
-import UserHomeComponent from './components/UserHomeComponenet.js';
+import UserHomeComponent from './components/UserHomeComponenent.js';
 
 (() => {
   let router = new VueRouter({
@@ -36,6 +36,10 @@ import UserHomeComponent from './components/UserHomeComponenet.js';
         if (localStorage.getItem("cachedUser")) {
           localStorage.removeItem("cachedUser");
         }
+
+        if (localStorage.getItem("cachedVideo")) {
+          localStorage.removeItem("cachedVideo");
+        }
       }
     },
 
@@ -51,20 +55,20 @@ import UserHomeComponent from './components/UserHomeComponenet.js';
         this.$router.push({ name: "home", params: { currentuser: user }});
         
       } else {
-        this.$router.push({ name: "login" });
+        this.$router.push({ name: "login" }).catch(err => {  });
       }
     },
 
     router: router
   }).$mount("#app");
 
-  router.beforeEach((to, from, next) => {
-    //console.log('router guard fired!', to, from, vm.authenticated);
+  // router.beforeEach((to, from, next) => {
+  //   //console.log('router guard fired!', to, from, vm.authenticated);
 
-    if (vm.authenticated == false) {
-      next("/login");
-    } else {
-      next();
-    }
-  });
+  //   if (vm.authenticated == false) {
+  //     next("/login");
+  //   } else {
+  //     next();
+  //   }
+  // });
 })();
