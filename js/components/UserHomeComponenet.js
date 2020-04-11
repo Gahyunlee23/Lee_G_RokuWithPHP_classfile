@@ -31,7 +31,7 @@ export default {
         return {
             activeComponent: VideoComponent,
 
-            mediaTypes: [
+            mediaType: [
                { iconClass: "fas fa-film", description: "Movies", component: VideoComponent },
                { iconClass: "fas fa-tv", description: "Television", component: VideoComponent },
                { iconClass: "fas fa-headphones", description: "Music", component: AudioComponent }
