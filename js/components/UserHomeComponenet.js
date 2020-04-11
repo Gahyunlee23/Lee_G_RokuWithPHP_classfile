@@ -29,19 +29,13 @@ export default {
 
     data: function() {
         return {
-            activeComponent: VideoComponent,
+            Component: VideoComponent,
 
             mediaTypes: [
                { iconClass: "fas fa-film", description: "Movies", component: VideoComponent },
                { iconClass: "fas fa-tv", description: "Television", component: VideoComponent },
                { iconClass: "fas fa-headphones", description: "Music", component: AudioComponent }
             ]
-        }
-    },
-
-    methods: {
-        switchMedia(theComponent) {
-            this.activeComponent = theComponent;
         }
     }
 }
