@@ -63,7 +63,7 @@ import UserHomeComponent from './components/UserHomeComponenent.js';
   }).$mount("#app");
 
   // router.beforeEach((to, from, next) => {
-  //   //console.log('router guard fired!', to, from, vm.authenticated);
+  //   console.log('router guard fired!', to, from, vm.authenticated);
 
   //   if (vm.authenticated == false) {
   //     next("/login");
