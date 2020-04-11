@@ -14,6 +14,14 @@ export default {
             <video autoplay controls muted :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-9">
+            <div class="thumb-wrapper clearfix">
+                <img v-for="item in allRetrievedVideos" :src="'images/' + item.movies_cover" alt="media thumb" @click="loadNewMovie(item)" class="img-thumbnail rounded float-left">
+            </div>
+        </div>
+    </div>
     `,
 
     data: function () {
@@ -26,17 +34,28 @@ export default {
     methods: {
         retrieveVideoContent() {
             // fetch all the video content here (don't care about filtering, genre etc at this point)
-            debugger;
+            // debugger;
             
-            let url = `./admin/index.php?media=movies`;
+            if (localStorage.getItem("cachedVideo")) {
+                this.allRetrievedVideos = JSON.parse(localStorage.getItem("cachedVideo"));
+                
+                this.currentMediaDetails = this.allRetrievedVideos[0];
+            } else {
+                let url = `./admin/index.php?media=movies`;
 
-            fetch(url) 
-            .then(res => res.json())
-            .then(data => {
-                this.allRetrievedVideos = data;
-                this.currentMediaDetails = data[0]
-            })
+                fetch(url) 
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem("cachedVideo", JSON.stringify(data));
 
+                    this.allRetrievedVideos = data;
+                    this.currentMediaDetails = data[0];
+                })
+            }
+        },
+
+        loadNewMovie(movie) {
+            this.currentMediaDetails = movie;
         }
     }
 }
