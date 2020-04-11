@@ -27,7 +27,15 @@ export default {
         retrieveVideoContent() {
             // fetch all the video content here (don't care about filtering, genre etc at this point)
             debugger;
+            
+            let url = `./admin/index.php?media=movies`;
 
+            fetch(url) 
+            .then(res => res.json())
+            .then(data => {
+                this.allRetrievedVideos = data;
+                this.currentMediaDetails = data[0]
+            })
 
         }
     }
