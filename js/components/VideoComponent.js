@@ -34,7 +34,7 @@ export default {
             .then(res => res.json())
             .then(data => {
                 this.allRetrievedVideos = data;
-                this.currentMediaDetails = data[0]
+                this.currentMediaDetails = data[0];
             })
 
         }
